@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+ <link rel="shortcut icon" type="image/ico" href="https://setiabudhi-supermarket.co.id/images/stb.png"> 
+ 
+   <meta data-rh="true" property="og:title" content="Stock Opname | Setiabudhi Supermarket"/>
+  <meta data-rh="true" property="og:site_name" content="setiabudhi supermarket"/>
+  <meta data-rh="true" property="og:description" content="Stock Opname Setiabudhi Supermarket"/>
+  <meta data-rh="true" property="og:url" content="https://www.setiabudhi-supermarket.co.id"/>
+  <meta data-rh="true" property="og:image" content="https://setiabudhi-supermarket.co.id/images/new.jpg"/>
+  <meta data-rh="true" property="og:image:secure_url" content="https://setiabudhi-supermarket.co.id/images/new.jpg"/>
+  <meta data-rh="true" property="og:image:type" content="image/jpg"/>
+  <meta data-rh="true" property="og:image:width" content="1200"/>
+  <meta data-rh="true" property="og:image:height" content="1200"/>
+  <meta data-rh="true" property="og:image:alt" content="Setiabudhi Supermarket Logo"/>
+  <meta data-rh="true" data-rh="true" name="twitter:card" content="summary_large_image"/>
+  <meta data-rh="true" data-rh="true" name="twitter:site" content="@setiabudhi"/>
+  <meta data-rh="true" data-rh="true" name="twitter:creator" content="@setiabudhi"/>
+  <meta data-rh="true" data-rh="true" name="twitter:title" content="Situs Order Online Terlengkap, Mudah &amp; Aman | Setiabudhi Supermarket"/>
+  <meta data-rh="true" data-rh="true" name="twitter:description" content="Situs order online terlengkap dengan berbagai pilihan produk berkualitas. Belanja online mudah dan menyenangkan di setiabudhi supermarket"/>
+  <meta data-rh="true" data-rh="true" name="twitter:image" content="https://setiabudhi-supermarket.co.id/images/new.jpg"/>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>Stock Opname</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i|Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+<link rel="stylesheet" type="text/css" href="styles/framework.css">
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">  
+</head>
+
+
+<style type="text/css">
+	#loading {
+	  position: fixed;
+	  height: 100%;
+	  opacity: 0.9;
+	  width: 100%;
+	  overflow: show;
+	  margin: auto;
+	  top: 0;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  
+	}
+
+
+</style>
+<body class="theme-light" data-background="none" data-highlight="red2">
+
+
+<!-- <div id="loading">
+	<img src="loading.gif" style="width: 70%;top:30%;left:15%;">
+</div> -->
+
+
+ <div class="header header-fixed header-logo-center"> 
+     
+
+        <a href="#" class="header-title">
+          SCAN PESANAN
+          <!-- <img src="https://setiabudhi-supermarket.co.id/images/brand.png" style="width: 100%;margin-top:5%"> -->
+        </a>
+    </div>
+  <div class="page-content header-clear-medium" style="background-color: #FFF">
+
+
+
+
+      <div class="content content-boxed" style="padding:5%">
+                <button id="btnScan" class="button button-l button-full round-small top-10" style="width: 100%;background-color: #cc3c24">
+                  SCAN BARCODE
+                </button>
+        </form>
+      </div>
+
+      <div class="datacontent">
+          
+      </div>
+      
+    </div>
+
+
+
+</div>
+<script type="text/javascript" src="scripts/jquery.js"></script>
+ <script type="text/javascript" src="cordova.js"></script>
+<script src="https://js.pusher.com/5.1/pusher.min.js"></script>
+<script type="text/javascript" src="scripts/plugins.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+
+<script type="text/javascript">
+ 
+$("#btnScan").click(function(e){
+  e.preventDefault();
+  prosesScan();
+})
+
+function prosesScan(){
+  cordova.plugins.barcodeScanner.scan(
+                  function (result) {
+            
+                            var dataBarcode = result.text;
+
+                            // console.log(dataBarcode);  
+
+                            $(".datacontent").append('<p>'+dataBarcode+'</p>');
+
+                  },
+                  function (error) {
+                      // alert("Scanning failed: " + error);
+                  },
+                  {
+                      preferFrontCamera : false, // iOS and Android
+                      showFlipCameraButton : true, // iOS and Android
+                      showTorchButton : true, // iOS and Android
+                      torchOn: false, // Android, launch with the torch switched on (if available)
+                      saveHistory: true, // Android, save scan history (default false)
+                      prompt : "Place a barcode inside the scan area", // Android
+                      resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+                      formats : "all", // default: all but PDF_417 and RSS_EXPANDED
+                      orientation : "portrait", // Android only (portrait|landscape), default unset so it rotates with the device
+                      disableAnimations : true, // iOS
+                      disableSuccessBeep: false // iOS and Android
+                  }
+               );
+}
+
+</script>
+
+
+
+
+
+
+</body>
